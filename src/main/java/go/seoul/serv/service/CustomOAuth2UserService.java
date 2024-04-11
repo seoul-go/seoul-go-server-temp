@@ -69,7 +69,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
 
         } else {
-            //이미 데이터가 존재할 때
+            //한번이라도 로그인 했었던 회원
             //업데이트만 진행함
             existData.setEmail(oAuth2Response.getEmail());
             existData.setName(oAuth2Response.getName());
