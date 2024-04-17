@@ -4,16 +4,22 @@ import go.seoul.serv.dto.MemberDTO;
 import go.seoul.serv.entity.MemberEntity;
 import go.seoul.serv.repository.MemberRepository;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
+    private static final Logger log = LoggerFactory.getLogger(MemberService.class);
 
     @Autowired
     public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder) {
@@ -21,11 +27,13 @@ public class MemberService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Transactional
     public MemberDTO registerMember(MemberDTO memberDto) {
-        if (memberRepository.findByUsername(memberDto.getUsername()).isPresent()) {
-            throw new RuntimeException("사용자 이름이 이미 사용되었습니다.");
-        }
+        log.info("회원 가입 시도: {}", memberDto.getUsername());
+        memberRepository.findByUsername(memberDto.getUsername()).ifPresent(existingUser -> {
+            log.error("사용자 이름 {}이(가) 이미 사용중입니다.", memberDto.getUsername());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "사용자 이름이 이미 사용되었습니다.");
+        });
+
         MemberEntity member = MemberEntity.builder()
                 .username(memberDto.getUsername())
                 .password(passwordEncoder.encode(memberDto.getPassword()))
@@ -33,8 +41,19 @@ public class MemberService {
                 .nickName(memberDto.getNickName())
                 .age(memberDto.getAge())
                 .build();
-        memberRepository.save(member);
-        return memberDto;
+        member = memberRepository.save(member);
+        log.info("회원 가입 성공: {}", member.getUsername());
+
+        return toMemberDTO(member);
+    }
+    private MemberDTO toMemberDTO(MemberEntity member) {
+        return new MemberDTO(
+                member.getUsername(),
+                null, // 비밀번호는 반환하지 않습니다.
+                member.getName(),
+                member.getNickName(),
+                member.getAge()
+        );
     }
 
     public String loginMember(MemberDTO memberDto) {

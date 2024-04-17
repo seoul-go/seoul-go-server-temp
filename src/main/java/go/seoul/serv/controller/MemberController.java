@@ -2,6 +2,8 @@ package go.seoul.serv.controller;
 
 import go.seoul.serv.dto.MemberDTO;
 import go.seoul.serv.service.MemberService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +19,19 @@ public class MemberController {
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
-
+    private static final Logger log = LoggerFactory.getLogger(MemberController.class);
     @PostMapping("/join")
     public ResponseEntity<MemberDTO> registerMember(@RequestBody MemberDTO memberDto) {
+        log.info("회원 가입 요청 받음: {}", memberDto);
         MemberDTO newMember = memberService.registerMember(memberDto);
         return new ResponseEntity<>(newMember, HttpStatus.CREATED);
+    }
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<String> handleRuntimeException(RuntimeException e) {
+        // 올바른 로깅 메소드 사용
+        log.error("오류 발생", e);
+        return ResponseEntity.badRequest().body(e.getMessage());
     }
 
     @PostMapping("/login")
