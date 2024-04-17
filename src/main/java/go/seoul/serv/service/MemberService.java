@@ -41,18 +41,9 @@ public class MemberService {
                 .nickName(memberDto.getNickName())
                 .age(memberDto.getAge())
                 .build();
-        member = memberRepository.save(member);
+        memberRepository.save(member);
         return memberDto;
     }
-//    private MemberDTO toMemberDTO(MemberEntity member) {
-//        return new MemberDTO(
-//                member.getUsername(),
-//                null, // 비밀번호는 반환하지 않습니다.
-//                member.getName(),
-//                member.getNickName(),
-//                member.getAge()
-//        );
-//    }
 
     public String loginMember(MemberDTO memberDto) {
         MemberEntity member = memberRepository.findByUsername(memberDto.getUsername())
