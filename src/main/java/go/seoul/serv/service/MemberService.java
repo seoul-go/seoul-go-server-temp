@@ -42,19 +42,17 @@ public class MemberService {
                 .age(memberDto.getAge())
                 .build();
         member = memberRepository.save(member);
-        log.info("회원 가입 성공: {}", member.getUsername());
-
-        return toMemberDTO(member);
+        return memberDto;
     }
-    private MemberDTO toMemberDTO(MemberEntity member) {
-        return new MemberDTO(
-                member.getUsername(),
-                null, // 비밀번호는 반환하지 않습니다.
-                member.getName(),
-                member.getNickName(),
-                member.getAge()
-        );
-    }
+//    private MemberDTO toMemberDTO(MemberEntity member) {
+//        return new MemberDTO(
+//                member.getUsername(),
+//                null, // 비밀번호는 반환하지 않습니다.
+//                member.getName(),
+//                member.getNickName(),
+//                member.getAge()
+//        );
+//    }
 
     public String loginMember(MemberDTO memberDto) {
         MemberEntity member = memberRepository.findByUsername(memberDto.getUsername())
