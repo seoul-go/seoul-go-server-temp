@@ -12,4 +12,11 @@ public class MainController {
         return "main route";
     }
 
+    @GetMapping("/my")
+    @ResponseBody
+    public String myAPI() {
+        return "my route";
+
+    }
+
 }
