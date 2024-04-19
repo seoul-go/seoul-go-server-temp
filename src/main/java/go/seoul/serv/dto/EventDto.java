@@ -1,25 +1,33 @@
 package go.seoul.serv.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
+@XmlAccessorType(XmlAccessType.FIELD)
 public class EventDto {
-
-    @JsonProperty("MAIN_IMG")
+    @XmlElement(name = "MAIN_IMG")
     private String mainImg;
 
-    @JsonProperty("CODENAME")
+    @XmlElement(name = "CODENAME")
     private String codename;
 
-    @JsonProperty("TITLE")
+    @XmlElement(name = "TITLE")
     private String title;
 
-    @JsonProperty("DATE")
+    @XmlElement(name = "DATE")
     private String date;
 
-    @JsonProperty("PLACE")
+    @XmlElement(name = "PLACE")
     private String place;
+
+    // 기타 필드와 getter/setter
 }

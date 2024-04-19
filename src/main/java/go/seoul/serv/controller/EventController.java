@@ -25,7 +25,7 @@ public class EventController {
     }
 
     // ID에 해당하는 단일 이벤트를 불러오는 API
-    @GetMapping("/api/events/{id}")
+    @GetMapping("{id}")
     public Event getEventById(@PathVariable Long id) {
         return eventRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found with id " + id));
