@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Service
 public class DetailCulturalEventService {
-
     private final DetailCulturalEventRepository repository;
 
     @Autowired

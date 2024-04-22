@@ -41,9 +41,9 @@ public class EventService {
         BufferedReader rd = null;
 
         try {
-            String apiKey = "63574b59786d6f6f3334744579636a"; // 실제 키로 교체해야 합니다.
+            String apiKey = "";
             StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088");
-            urlBuilder.append("/").append(apiKey); // URL 인코딩을 제거했습니다.
+            urlBuilder.append("/").append(apiKey);
             urlBuilder.append("/xml/culturalEventInfo/1/5");
 
             URL url = new URL(urlBuilder.toString());
