@@ -21,7 +21,8 @@ public class DetailCulturalEventService {
         return repository.findAll();
     }
 
-    public Optional<DetailCulturalEvent> getDetailCulturalEventById(int id) {
-        return repository.findById(id);
+    public DetailCulturalEvent getDetailCulturalEventById(int id) {
+        return repository.findById(id).orElse(null);
     }
+
 }
