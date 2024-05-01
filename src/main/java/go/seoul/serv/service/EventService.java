@@ -7,7 +7,9 @@ import go.seoul.serv.repository.EventRepository;
 import jakarta.annotation.PostConstruct;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Unmarshaller;
+//import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -24,6 +26,10 @@ import java.util.stream.Collectors;
 
 @Service
 public class EventService {
+
+    @Value("${api.seoul.key}")
+    private String apiKey;
+
     @Autowired
     private EventRepository eventRepository;
 
@@ -41,9 +47,8 @@ public class EventService {
         BufferedReader rd = null;
 
         try {
-            String apiKey = "63574b59786d6f6f3334744579636a"; // 실제 키로 교체해야 합니다.
             StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088");
-            urlBuilder.append("/").append(apiKey); // URL 인코딩을 제거했습니다.
+            urlBuilder.append("/").append(apiKey);
             urlBuilder.append("/xml/culturalEventInfo/1/5");
 
             URL url = new URL(urlBuilder.toString());

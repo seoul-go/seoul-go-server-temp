@@ -29,5 +29,4 @@ public class EventDto {
     @XmlElement(name = "PLACE")
     private String place;
 
-    // 기타 필드와 getter/setter
 }

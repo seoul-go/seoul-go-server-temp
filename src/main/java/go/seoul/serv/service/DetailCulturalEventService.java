@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Service
 public class DetailCulturalEventService {
-
     private final DetailCulturalEventRepository repository;
 
     @Autowired
@@ -22,7 +21,8 @@ public class DetailCulturalEventService {
         return repository.findAll();
     }
 
-    public Optional<DetailCulturalEvent> getDetailCulturalEventById(int id) {
-        return repository.findById(id);
+    public DetailCulturalEvent getDetailCulturalEventById(int id) {
+        return repository.findById(id).orElse(null);
     }
+
 }
