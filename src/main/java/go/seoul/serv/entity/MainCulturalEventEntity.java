@@ -7,12 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "main_cultural_event")
+@Table(name = "main_cultural_events")
 public class MainCulturalEventEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 데이터베이스에서 ID가 자동으로 생성되는 경우 사용
-    @Column(name = "main_cultural_event_id") // 데이터베이스 컬럼 이름 명시
-    private int mainCulturalEventId;
+    @Column(name = "id") // 데이터베이스 컬럼 이름 명시
+    private int id;
 
     @Column(name = "codename")
     private String codename;
