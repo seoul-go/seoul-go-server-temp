@@ -1,12 +1,11 @@
 package go.seoul.serv.service;
 
-import go.seoul.serv.entity.DetailCulturalEvent;
+import go.seoul.serv.entity.DetailCulturalEventEntity;
 import go.seoul.serv.repository.DetailCulturalEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class DetailCulturalEventService {
@@ -17,11 +16,11 @@ public class DetailCulturalEventService {
         this.repository = repository;
     }
 
-    public List<DetailCulturalEvent> getAllDetailCulturalEvents() {
+    public List<DetailCulturalEventEntity> getAllDetailCulturalEvents() {
         return repository.findAll();
     }
 
-    public DetailCulturalEvent getDetailCulturalEventById(int id) {
+    public DetailCulturalEventEntity getDetailCulturalEventById(int id) {
         return repository.findById(id).orElse(null);
     }
 

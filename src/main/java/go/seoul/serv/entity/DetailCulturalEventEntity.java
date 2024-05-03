@@ -7,12 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "detail_cultural_event")
-public class DetailCulturalEvent {
+@Table(name = "detail_cultural_events")
+public class DetailCulturalEventEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "detail_cultural_event_id")
-    private int detailCulturalEventId;
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "codename")
     private String codename;
@@ -38,6 +38,9 @@ public class DetailCulturalEvent {
     @Column(name = "use_fee")
     private String useFee;
 
+    @Column(name = "player") // 추가된 필드 'player'
+    private String player;
+
     @Column(name = "program")
     private String program;
 
@@ -53,12 +56,6 @@ public class DetailCulturalEvent {
     @Column(name = "ticket")
     private String ticket;
 
-    @Column(name = "startdate")
-    private String startdate;
-
-    @Column(name = "end_date")
-    private String endDate;
-
     @Column(name = "themecode")
     private String themecode;
 
@@ -73,4 +70,8 @@ public class DetailCulturalEvent {
 
     @Column(name = "hmpg_addr")
     private String hmpgAddr;
+
+    // 기본 생성자
+    public DetailCulturalEventEntity() {
+    }
 }

@@ -1,7 +1,7 @@
 package go.seoul.serv.repository;
 
-import go.seoul.serv.entity.DetailCulturalEvent;
+import go.seoul.serv.entity.DetailCulturalEventEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DetailCulturalEventRepository extends JpaRepository<DetailCulturalEvent, Integer> {
+public interface DetailCulturalEventRepository extends JpaRepository<DetailCulturalEventEntity, Integer> {
 }
