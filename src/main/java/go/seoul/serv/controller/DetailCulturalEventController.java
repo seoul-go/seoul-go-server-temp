@@ -23,9 +23,10 @@ public class DetailCulturalEventController {
 
     @GetMapping("/{id}")
     public DetailCulturalEventEntity getEventById(@PathVariable int id) {
-        return service.getAllDetailCulturalEvents().get(id);
+        return service.getDetailCulturalEventById(id);
     }
 }
+
 
 
 
