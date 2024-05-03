@@ -1,6 +1,6 @@
 package go.seoul.serv.controller;
 
-import go.seoul.serv.entity.MainCulturalEvent;
+import go.seoul.serv.entity.MainCulturalEventEntity;
 import go.seoul.serv.service.MainCulturalEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +17,12 @@ public class MainCulturalEventController {
     private MainCulturalEventService service;
 
     @GetMapping
-    public List<MainCulturalEvent> getAllEvents() {
+    public List<MainCulturalEventEntity> getAllEvents() {
         return service.getAllEvents();
     }
 
     @GetMapping("/{id}")
-    public MainCulturalEvent getEventById(@PathVariable int id) {
+    public MainCulturalEventEntity getEventById(@PathVariable int id) {
         return service.getEventById(id);
     }
 }

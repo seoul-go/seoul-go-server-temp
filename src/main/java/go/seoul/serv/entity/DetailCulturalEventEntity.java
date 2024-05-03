@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "detail_cultural_event")
-public class DetailCulturalEvent {
+public class DetailCulturalEventEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "detail_cultural_event_id")

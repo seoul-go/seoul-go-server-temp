@@ -1,6 +1,6 @@
 package go.seoul.serv.service;
 
-import go.seoul.serv.entity.MainCulturalEvent;
+import go.seoul.serv.entity.MainCulturalEventEntity;
 import go.seoul.serv.repository.MainCulturalEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,11 @@ public class MainCulturalEventService {
     @Autowired
     private MainCulturalEventRepository repository;
 
-    public List<MainCulturalEvent> getAllEvents() {
+    public List<MainCulturalEventEntity> getAllEvents() {
         return repository.findAll();
     }
 
-    public MainCulturalEvent getEventById(int id) {
+    public MainCulturalEventEntity getEventById(int id) {
         return repository.findById(id).orElse(null);
     }
 }

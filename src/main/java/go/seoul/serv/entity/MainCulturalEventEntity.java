@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "main_cultural_event")
-public class MainCulturalEvent {
+public class MainCulturalEventEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 데이터베이스에서 ID가 자동으로 생성되는 경우 사용
     @Column(name = "main_cultural_event_id") // 데이터베이스 컬럼 이름 명시
@@ -31,5 +31,10 @@ public class MainCulturalEvent {
 
     @Column(name = "main_image")
     private String mainImage;
+
+    //기본 생성자
+    public MainCulturalEventEntity() {
+
+    }
 
 }
