@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface MainCulturalEventRepository extends JpaRepository<MainCulturalEventEntity, Integer> {
     List<MainCulturalEventEntity> findAllByEndDateBetween(Date start, Date end);
+    List<MainCulturalEventEntity> findAllByStartDateBetween(Date start, Date end);
 }
