@@ -22,19 +22,17 @@ public class MainCulturalEventService {
         return repository.findById(id).orElse(null);
     }
 
-    //한 달 이내 행사
+    // 한 달 이내에 종료되는 행사
     public List<MainCulturalEventEntity> getEventsEndingWithinAMonth() {
         Date today = new Date();
         Date oneMonthLater = org.apache.commons.lang3.time.DateUtils.addMonths(today, 1);
-
-        return repository.findAllByEndDateBetween(today, oneMonthLater);
+        return repository.findEventsEndingWithinAMonth(today, oneMonthLater);
     }
-    //2주 이내에 시작된 행사
+    // 최근 2주 이내에 시작된 행사
     public List<MainCulturalEventEntity> getEventsStartedWithinTwoWeeks() {
         Date today = new Date();
         Date twoWeeksAgo = org.apache.commons.lang3.time.DateUtils.addWeeks(today, -2);
-
-        return repository.findAllByStartDateBetween(twoWeeksAgo, today);
+        return repository.findEventsStartedWithinTwoWeeks(twoWeeksAgo, today);
     }
 
 }
