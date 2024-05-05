@@ -1,5 +1,6 @@
 package go.seoul.serv.entity;
-
+import java.util.Date;
+import java.util.List;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,6 +33,13 @@ public class MainCulturalEventEntity {
     @Column(name = "main_image")
     private String mainImage;
 
+    @Column(name = "start_date")
+    @Temporal(TemporalType.DATE)
+    private Date startDate;
+
+    @Column(name = "end_date")
+    @Temporal(TemporalType.DATE)
+    private Date endDate;
     //기본 생성자
     public MainCulturalEventEntity() {
 
