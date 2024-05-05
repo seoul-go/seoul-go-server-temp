@@ -25,4 +25,9 @@ public class MainCulturalEventController {
     public MainCulturalEventEntity getEventById(@PathVariable int id) {
         return service.getEventById(id);
     }
+
+    @GetMapping("/ending-soon")
+    public List<MainCulturalEventEntity> getEndingSoonEvents() {
+        return service.getEventsEndingWithinAMonth();
+    }
 }

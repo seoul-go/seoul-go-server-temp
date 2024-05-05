@@ -14,21 +14,6 @@ public class DetailCulturalEventEntity {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "codename")
-    private String codename;
-
-    @Column(name = "guname")
-    private String guname;
-
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "date")
-    private String date;
-
-    @Column(name = "place")
-    private String place;
-
     @Column(name = "org_name")
     private String orgName;
 
@@ -49,9 +34,6 @@ public class DetailCulturalEventEntity {
 
     @Column(name = "org_link")
     private String orgLink;
-
-    @Column(name = "main_image")
-    private String mainImage;
 
     @Column(name = "ticket")
     private String ticket;
