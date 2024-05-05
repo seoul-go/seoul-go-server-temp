@@ -26,8 +26,15 @@ public class MainCulturalEventController {
         return service.getEventById(id);
     }
 
+    //마감이 한달 이내인 행사 조회
     @GetMapping("/ending-soon")
     public List<MainCulturalEventEntity> getEndingSoonEvents() {
         return service.getEventsEndingWithinAMonth();
+    }
+
+    //최근에 올라온 행사 조회
+    @GetMapping("/recently-started")
+    public List<MainCulturalEventEntity> getRecentlyStartedEvents() {
+        return service.getEventsStartedWithinTwoWeeks();
     }
 }
