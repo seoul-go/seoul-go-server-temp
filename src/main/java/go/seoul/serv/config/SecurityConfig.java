@@ -23,7 +23,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/v1/users/join", "/v1/login","/api/detailCulturalEvents/**","/api/mainCulturalEvents/**","/api/searchCulturalEvents/**").permitAll()
+                        .requestMatchers("/v1/users/join", "/v1/login","/api/detailCulturalEvents/**","/api/mainCulturalEvents/**","/api/searchCulturalEvents/**","/api/searchCulturalEvents/active/**").permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(httpBasic -> httpBasic.disable())
                 .formLogin(formLogin -> formLogin.disable())
