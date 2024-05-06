@@ -25,4 +25,9 @@ public class SearchCulturalEventController {
     public SearchCulturalEventEntity getEventById(@PathVariable int id) {
         return service.getSearchCulturalEventById(id);
     }
+
+    @GetMapping("/codename/{codename}")
+    public List<SearchCulturalEventEntity> getActiveEventsByCodename(@PathVariable String codename) {
+        return service.findActiveEventsByCodename(codename);
+    }
 }
