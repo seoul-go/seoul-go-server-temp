@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @Entity
@@ -70,6 +72,14 @@ public class SearchCulturalEventEntity {
 
     @Column(name = "hmpg_addr")
     private String hmpgAddr;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "start_date")
+    private Date startDate;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "end_date")
+    private Date endDate;
 
     public SearchCulturalEventEntity() {
 
